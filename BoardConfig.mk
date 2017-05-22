@@ -39,14 +39,13 @@ TARGET_USES_64_BIT_BINDER := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78af000
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE :=  2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-TARGET_KERNEL_CONFIG := lineageos_mido_defconfig
+TARGET_KERNEL_CONFIG := mido_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8953
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
 # ANT
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -162,6 +161,10 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_mido
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
 
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+BOARD_LIGHTS_VARIANT := aw2013
+
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
 
@@ -211,8 +214,6 @@ BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
-WIFI_DRIVER_MODULE_NAME := "wlan"
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
