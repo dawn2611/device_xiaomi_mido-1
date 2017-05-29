@@ -127,6 +127,11 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
+# Include explicitly to work around GMS issues
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full \
+    librsjni
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprintd
